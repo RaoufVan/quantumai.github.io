@@ -158,7 +158,9 @@
             {
                 title: "Quantum AI : The Next Generation AI ",
                 subtitle: "Al Qam",
-                content: [],
+                 content: [   { text: "", icon: "none" },
+            { text: "", icon: "none" },
+            { text: "", icon: "none" }],
                 isTitle: true
             },
             {
@@ -209,7 +211,7 @@
             },
             
             {
-                title: "The Future of AI = Quantum AI",
+                title: "The Future AI = Quantum AI",
                 subtitle: "A New Paradigm",
                 content: [
                     { text: "Quantum-classical hybrid systems for optimal performance", icon: "git-merge" },
@@ -239,21 +241,25 @@
         let currentSlide = 0;
 
         function updateSlide() {
-            const slide = slides[currentSlide];
-            document.getElementById('title').textContent = slide.title;
-            document.getElementById('subtitle').textContent = slide.subtitle;
+    const slide = slides[currentSlide];
+    document.getElementById('title').textContent = slide.title;
+    document.getElementById('subtitle').textContent = slide.subtitle;
 
-            const content = document.getElementById('content');
-            content.innerHTML = '';
+    const content = document.getElementById('content');
+    content.innerHTML = '';
+    
+    slide.content.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.style.animationDelay = `${index * 0.1}s`;
+        if (item.text) {  // Only add content if there's text
+            li.innerHTML = `<i data-lucide="${item.icon}"></i>${item.text}`;
+        } else {
+            li.style.height = '20px';  // Add space for empty items
+        }
+        content.appendChild(li);
+    });
+
             
-            if (!slide.isTitle) {
-                slide.content.forEach((item, index) => {
-                    const li = document.createElement('li');
-                    li.style.animationDelay = `${index * 0.1}s`;
-                    li.innerHTML = `<i data-lucide="${item.icon}"></i>${item.text}`;
-                    content.appendChild(li);
-                });
-            }
 
             const quoteBox = document.getElementById('quote-box');
             if (slide.quote) {
