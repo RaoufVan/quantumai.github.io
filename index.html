@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharjah Emirati Genome Project Presentation</title>
+    <title>Quantum AI: The Next Generation AI</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap');
@@ -34,10 +33,12 @@
             max-width: 800px;
             padding: 40px;
             position: relative;
+            min-height: 500px;
         }
 
         .title-container {
             margin-bottom: 30px;
+            text-align: center;
         }
 
         h1 {
@@ -51,6 +52,7 @@
             color: var(--accent-color);
             font-size: 1.5em;
             margin-top: 10px;
+            font-weight: 300;
         }
 
         ul {
@@ -64,40 +66,66 @@
             display: flex;
             align-items: center;
             font-size: 1.1em;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
         }
 
         li i {
-            margin-right: 10px;
+            margin-right: 15px;
+            flex-shrink: 0;
         }
 
         .navigation {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-top: 30px;
+            padding: 0 20px;
         }
 
-        button {
+        .nav-button {
             background-color: var(--primary-color);
             color: var(--secondary-color);
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 0.9em;
             font-weight: 600;
             transition: all 0.3s ease;
         }
 
-        button:hover {
+        .nav-button:hover {
             background-color: var(--accent-color);
         }
 
+        .nav-button:disabled {
+            background-color: #ccc;
+            cursor: default;
+        }
+
         .page-number {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 1em;
+            font-size: 0.9em;
             color: var(--accent-color);
+        }
+
+        .quote-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--bg-color);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 8px;
+        }
+
+        .quote {
+            color: var(--primary-color);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .attribution {
+            color: var(--accent-color);
+            font-weight: 500;
         }
 
         @keyframes fadeIn {
@@ -113,63 +141,97 @@
 <body>
     <div class="card">
         <div class="title-container">
-            <h1 id="title">Sharjah Emirati Genome Project</h1>
-            <h2 id="subtitle">A Vision for Health and Progress</h2>
+            <h1 id="title">Quantum AI</h1>
+            <h2 id="subtitle">The Next Generation AI</h2>
         </div>
-        <ul id="content">
-            <li><i data-lucide="dna"></i>Tailored healthcare for 208,000 Emirati citizens</li>
-            <li><i data-lucide="microscope"></i>Positioning Sharjah as a leader in precision medicine</li>
-            <li><i data-lucide="graduation-cap"></i>Leveraging Sharjah University's academic strengths</li>
-            <li><i data-lucide="cpu"></i>Cutting-edge AI and quantum computing analysis</li>
-        </ul>
+        <ul id="content"></ul>
+        <div id="quote-box"></div>
         <div class="navigation">
-            <button onclick="changeSlide(-1)">Previous</button>
-            <button onclick="changeSlide(1)">Next</button>
+            <button class="nav-button" onclick="changeSlide(-1)">Previous</button>
+            <span class="page-number" id="page-number">1 / 7</span>
+            <button class="nav-button" onclick="changeSlide(1)">Next</button>
         </div>
-        <div class="page-number" id="page-number">1 / 4</div>
     </div>
 
     <script>
         const slides = [
             {
-                title: "Sharjah Emirati Genome Project",
-                subtitle: "A Vision for Health and Progress",
+                title: "Quantum AI",
+                subtitle: "The Next Generation AI",
+                content: [],
+                isTitle: true
+            },
+            {
+                title: "The Energy Crisis in AI",
+                subtitle: "Unsustainable Power Requirements",
                 content: [
-                    { text: "Tailored healthcare for 208,000 Emirati citizens", icon: "dna" },
-                    { text: "Positioning Sharjah as a leader in precision medicine", icon: "microscope" },
-                    { text: "Leveraging Sharjah University's academic strengths", icon: "graduation-cap" },
-                    { text: "Cutting-edge AI and quantum computing analysis", icon: "cpu" }
+                    { text: "Single ChatGPT query consumes 10x more energy than a Google search", icon: "zap" },
+                    { text: "GPT-3 training: 1,287 MWh (equivalent to 120+ US households' yearly usage)", icon: "battery-charging" },
+                    { text: "Microsoft considering nuclear reactors to power next-gen AI training", icon: "factory" },
+                    { text: "Training a single large language model produces 626,000 pounds of CO2", icon: "cloud" },
+                    { text: "AI energy consumption projected to exceed many countries' total usage by 2027", icon: "trending-up" }
                 ]
             },
             {
-                title: "Advancing Sharjah's Healthcare",
-                subtitle: "Personalized Medicine for All",
+                title: "The Black Box Problem",
+                subtitle: "Critical Limitations in Classical AI",
                 content: [
-                    { text: "Early detection of genetic disorders", icon: "search" },
-                    { text: "Personalized treatment plans for citizens", icon: "clipboard-list" },
-                    { text: "15-20% reduction in healthcare costs", icon: "trending-down" },
-                    { text: "Development of Sharjah-specific health apps", icon: "smartphone" }
+                    { text: "Current AI models operate as massive black boxes with billions of parameters", icon: "box" },
+                    { text: "No clear understanding of decision-making process or reasoning", icon: "help-circle" },
+                    { text: "Critical barrier for healthcare, security, and regulatory compliance", icon: "shield" },
+                    { text: "Brute force pattern matching instead of genuine understanding", icon: "cpu" },
+                    { text: "Lack of transparency creates trust and liability issues", icon: "alert-triangle" }
+                ],
+                quote: "AI systems placed into unfamiliar environments often fail because they can only make decisions subconsciously, with no awareness of what they are doing.",
+                attribution: "Research in AI Safety"
+            },
+            {
+                title: "Quantum Computing: The Energy Solution",
+                subtitle: "Revolutionary Efficiency",
+                content: [
+                    { text: "D-Wave quantum computer operates at constant 25 kW power", icon: "cpu" },
+                    { text: "In contrast to classical AI systems that scale exponentially with size", icon: "trending-down" },
+                    { text: "Quantum annealing provides natural optimization pathway", icon: "git-merge" },
+                    { text: "No additional energy needed as problem complexity increases", icon: "check-circle" },
+                    { text: "Potential for carbon-neutral AI operations at scale", icon: "leaf" }
                 ]
             },
             {
-                title: "Economic Growth and Innovation",
-                subtitle: "Boosting Sharjah's Economy",
+                title: "Quantum Advantage for AGI",
+                subtitle: "Beyond Classical Limitations",
                 content: [
-                    { text: "High-skilled jobs for Emiratis", icon: "users" },
-                    { text: "Sharjah as a hub for biotech industries", icon: "building" },
-                    { text: "Attraction of international investments", icon: "landmark" },
-                    { text: "New startups in personalized medicine", icon: "rocket" }
+                    { text: "Quantum superposition enables true parallel exploration of possibilities", icon: "git-branch" },
+                    { text: "Entanglement allows complex correlations impossible in classical systems", icon: "link" },
+                    { text: "Natural handling of uncertainty and probability distributions", icon: "percent" },
+                    { text: "Quantum algorithms can process information more efficiently than classical ones", icon: "zap" },
+                    { text: "Path to more intuitive and empathetic AI systems", icon: "heart" }
                 ]
             },
             {
-                title: "Long-term Impact on Sharjah",
-                subtitle: "Shaping a Brighter Future",
+                title: "Quantum Brain Theory",
+                subtitle: "Penrose-Hameroff Model",
                 content: [
-                    { text: "Creating a healthier, productive population", icon: "heart" },
-                    { text: "Valuable genomic database for research", icon: "database" },
-                    { text: "Significant healthcare cost savings", icon: "trending-down" },
-                    { text: "Inspiring next-gen Sharjah scientists", icon: "lightbulb" }
-                ]
+                    { text: "Microtubules in neurons maintain quantum coherent states", icon: "brain" },
+                    { text: "Quantum processing explains consciousness and genuine understanding", icon: "lightbulb" },
+                    { text: "Human brain computes consciousness on just 20 watts of power", icon: "zap" },
+                    { text: "Quantum effects enable intuition and non-algorithmic reasoning", icon: "sparkles" },
+                    { text: "Model suggests path to explainable, conscious AI", icon: "map" }
+                ],
+                quote: "Understanding consciousness through quantum mechanics may be key to creating AI systems that can truly understand and explain their own actions.",
+                attribution: "Roger Penrose"
+            },
+            {
+                title: "The Future of Quantum AI",
+                subtitle: "A New Paradigm",
+                content: [
+                    { text: "Quantum-classical hybrid systems for optimal performance", icon: "git-merge" },
+                    { text: "Self-explaining AI through quantum-inspired architectures", icon: "message-circle" },
+                    { text: "Energy-efficient scaling for future AI development", icon: "trending-up" },
+                    { text: "Potential for true artificial consciousness", icon: "brain" },
+                    { text: "Path to safe and trustworthy AI systems", icon: "shield" }
+                ],
+                quote: "Life appears to have a biohack for extraordinary computation vastly beyond classical computers today.",
+                attribution: "Quantum Computing Research"
             }
         ];
 
@@ -179,17 +241,41 @@
             const slide = slides[currentSlide];
             document.getElementById('title').textContent = slide.title;
             document.getElementById('subtitle').textContent = slide.subtitle;
+
             const content = document.getElementById('content');
-            content.innerHTML = slide.content.map(item => 
-                `<li class="fade-in"><i data-lucide="${item.icon}"></i>${item.text}</li>`
-            ).join('');
+            content.innerHTML = '';
+            
+            if (!slide.isTitle) {
+                slide.content.forEach((item, index) => {
+                    const li = document.createElement('li');
+                    li.style.animationDelay = `${index * 0.1}s`;
+                    li.innerHTML = `<i data-lucide="${item.icon}"></i>${item.text}`;
+                    content.appendChild(li);
+                });
+            }
+
+            const quoteBox = document.getElementById('quote-box');
+            if (slide.quote) {
+                quoteBox.innerHTML = `
+                    <div class="quote-container">
+                        <div class="quote">"${slide.quote}"</div>
+                        <div class="attribution">— ${slide.attribution}</div>
+                    </div>
+                `;
+            } else {
+                quoteBox.innerHTML = '';
+            }
+
             document.getElementById('page-number').textContent = `${currentSlide + 1} / ${slides.length}`;
             lucide.createIcons();
         }
 
         function changeSlide(direction) {
-            currentSlide = (currentSlide + direction + slides.length) % slides.length;
-            updateSlide();
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 0 && newSlide < slides.length) {
+                currentSlide = newSlide;
+                updateSlide();
+            }
         }
 
         updateSlide();
